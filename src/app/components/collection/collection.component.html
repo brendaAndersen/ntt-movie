@@ -1,0 +1,51 @@
+<div class="container"  class="bg-image w-full shadow-lg"
+  style="
+    background-image: url('../../../assets/home.png');
+    height: 45rem;
+    width: 100%;"
+> 
+<header class="mx-auto row justify-content-center">
+  <div class="col-sm">
+    <picture>
+      <source srcset="" type="image/svg+xml">
+      <img src="./../../../assets/logo.png" class="float-right img-fluid" alt="..." style="width:30%">
+    </picture>
+  </div>
+  <form (ngSubmit)="onSubmit(form)" #form="ngForm" class="col-sm">
+    <div class="container form-group">
+      <div class="row input-group input-group-sm  ">
+        <div class="input-group m-3">
+          <input name="movie" type="text" class="form-control bg-dark text-white" placeholder="search for some movie" aria-label="title movie" aria-describedby="button-addon2">
+          <button class="btn btn btn-outline-light fw-bold" type="button" id="button-addon2">Search</button>
+        </div>
+      </div>
+    </div>
+    <small *ngIf="form.invalid && form.dirty" id="errorMessage" class="form-text"></small>
+  </form>  
+  <h1 class="text-center text-white fw-bold m-5" style="font-size: 4rem;">
+    O seu guia de streaming <br>para os melhores filmes e séries
+  </h1>
+</header>
+</div>
+<div class="container m-5 row">
+  <div class="col-md-3 mb-3">
+    <img src="{{movies$.Poster}}" class="card-img-top" alt="Poster">
+  </div>
+  <div class="card" style="width: 50%; height: 23.7rem;">
+    <div class="card-body col">
+      <h5 class="card-title row">{{ movies$.Title }}</h5>
+      <div class="col">
+        <b>GENRE</b>
+        <p class="card-text">{{ movies$.Genre }}</p>
+      </div>
+      <div class="col">
+        <b>PLOT</b>
+        <p class="card-text">{{ movies$.Plot }}</p>
+        <b>ACTORS</b>
+        <p class="card-text">{{ movies$.Actors }}</p>
+        <a href="#" class="text-danger">like</a>
+        <i class="bi bi-heart"></i>
+      </div>
+    </div>
+  </div>
+</div>
