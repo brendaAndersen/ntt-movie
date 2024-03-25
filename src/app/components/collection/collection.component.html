@@ -31,13 +31,13 @@
   <div *ngFor="let movie of movies$; let i = index" class="col-md-3 mb-3" id="#collections">
     <div>
       <div class="card" >
-        <div class="card-body" style="height: 550px;">
-          <picture>
-            <img [src]="movie.Poster" class="card-img-top" alt="Poster"  *ngIf="movie.Poster !== 'N/A'"> 
+        <div class="card-body" style="height: 520px;">
+          <picture >
+            <img style="height: 300px;" [src]="movie.Poster" class="card-img-top" alt="Poster"  *ngIf="movie.Poster !== 'N/A'"> 
             <img src="../../../assets/image-not-found.png"  class="card-img-top" alt="Poster"  *ngIf="movie.Poster === 'N/A'"> 
           </picture>
           <div class="card">
-            <div class="card-body col" style="max-height: 180px;">
+            <div class="card-body col" style="height: 180px;">
               <h6 class="card-title row"><ins><b>{{ movie.Title }}</b></ins></h6> 
               <div class="col">
                 <p class="card-text"><b>imdbID: </b>{{ movie.imdbID }}</p>
