@@ -7,7 +7,7 @@ import { Movie, Search } from './core/model/movie.model';
   providedIn: 'root'
 })
 export class ApiService {
-  private url = 'http://www.omdbapi.com/?i=tt3896198&apikey=11dd99db';
+  private url = 'https://www.omdbapi.com/?i=tt3896198&apikey=11dd99db';
   
   constructor(private api: HttpClient) { }
 
