@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CollectionComponent } from './components/collection/collection.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -13,10 +14,12 @@ import { CommonModule } from '@angular/common';
   ],
   imports: [
     CollectionComponent,
+    HeaderComponent,
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-    CommonModule
+    CommonModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
