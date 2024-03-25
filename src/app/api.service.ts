@@ -8,15 +8,15 @@ import { Movie, Search } from './core/model/movie.model';
 })
 export class ApiService {
   private url = 'http://www.omdbapi.com/?i=tt3896198&apikey=11dd99db';
-
+  
   constructor(private api: HttpClient) { }
 
   getAllMovies(): Observable<Movie[]>{
-    return this.api.get<Search>(`${this.url}&s=`).pipe(map(result => <Movie[]><unknown>result));
+    return this.api.get<Search>(`${this.url}&s=all`).pipe(map(result => <Movie[]><unknown>result));
   }
 
-  getMovieByName(query: string): Observable<Movie[]>{
-    return this.api.get<Search>(`${this.url}&?t=${query}`).pipe(map(result => <Movie[]>result.Search));
+  getMovieByName(name: string): Observable<Movie[]>{
+    return this.api.get<Search>(`${this.url}&s=${name}`).pipe(map(result => <Movie[]><unknown>result));
   }
 
   getMovieById(query: string): Observable<Movie>{

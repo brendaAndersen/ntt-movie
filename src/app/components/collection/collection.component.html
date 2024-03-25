@@ -11,12 +11,12 @@
       <img src="./../../../assets/logo.png" class="float-right img-fluid" alt="..." style="width:30%">
     </picture>
   </div>
-  <form (ngSubmit)="onSubmit(form)" #form="ngForm" class="col-sm">
+  <form (ngSubmit)="onSubmit(form)" #form="ngForm" class="col-sm">  
     <div class="container form-group">
-      <div class="row input-group input-group-sm  ">
+      <div class="row input-group input-group-sm">
         <div class="input-group m-3">
-          <input name="movie" type="text" class="form-control bg-dark text-white" placeholder="search for some movie" aria-label="title movie" aria-describedby="button-addon2">
-          <button class="btn btn btn-outline-light fw-bold" type="button" id="button-addon2">Search</button>
+          <input name="movieName"  [(ngModel)]="movieName" type="text" class="form-control bg-dark text-white" placeholder="search for some movie" aria-label="title movie" aria-describedby="button-addon2">
+          <button (click)="changeLocal()" class="btn btn btn-outline-light fw-bold" type="submit" id="button-addon2">Search</button>
         </div>
       </div>
     </div>
@@ -27,24 +27,35 @@
   </h1>
 </header>
 </div>
-<div class="container m-5 row">
-  <div class="col-md-3 mb-3">
-    <img src="{{movies$.Poster}}" class="card-img-top" alt="Poster">
-  </div>
-  <div class="card" style="width: 50%; height: 23.7rem;">
-    <div class="card-body col">
-      <h5 class="card-title row">{{ movies$.Title }}</h5>
-      <div class="col">
-        <b>GENRE</b>
-        <p class="card-text">{{ movies$.Genre }}</p>
-      </div>
-      <div class="col">
-        <b>PLOT</b>
-        <p class="card-text">{{ movies$.Plot }}</p>
-        <b>ACTORS</b>
-        <p class="card-text">{{ movies$.Actors }}</p>
-        <a href="#" class="text-danger">like</a>
-        <i class="bi bi-heart"></i>
+<div class="container m-5 row" *ngIf="movies$">
+  <div *ngFor="let movie of movies$; let i = index" class="col-md-3 mb-3" id="#collections">
+    <div>
+      <div class="card" >
+        <div class="card-body" style="height: 550px;">
+          <picture>
+            <img [src]="movie.Poster" class="card-img-top" alt="Poster"  *ngIf="movie.Poster !== 'N/A'"> 
+            <img src="../../../assets/image-not-found.png"  class="card-img-top" alt="Poster"  *ngIf="movie.Poster === 'N/A'"> 
+          </picture>
+          <div class="card">
+            <div class="card-body col" style="max-height: 180px;">
+              <h6 class="card-title row"><ins><b>{{ movie.Title }}</b></ins></h6> 
+              <div class="col">
+                <p class="card-text"><b>imdbID: </b>{{ movie.imdbID }}</p>
+                
+              </div>
+              <div class="col">
+                <p class="card-text"><b>Type: </b>{{ movie.Type }}</p>
+              </div>
+              <div class="col">
+                <p class="card-text"> <b>Year: </b>{{ movie.Year }}</p> 
+
+                <div (click)="handleClick(i)" class="text-danger">
+                <i [id]={i} [ngClass]="{'bi bi-heart': !liked.includes(movie.Title), 'bi bi-heart-fill': liked.includes(movie.Title)}"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
